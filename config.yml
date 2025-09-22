@@ -1,0 +1,46 @@
+experiment:
+  epochs: 100
+  batch_size_train: 32
+  batch_size_val: 32
+
+model:
+  name: 'unet'
+  params:
+    encoder_name: 'resnet34'
+    encoder_weights: 'imagenet'
+    in_channels: 1
+    classes: 1
+
+criterion: 
+  name: 'JaccardLoss'
+  params:
+    mode: 'binary'
+
+optimizer:
+  name: 'SGD'
+  params:
+    lr: 0.1
+
+scheduler: 
+  name: 'StepLR'
+  params:
+    step_size: 100
+    gamma: 0.1
+
+data:
+  img_folder: 'data/marshfield_chute/images'
+  mask_folder: 'data/marshfield_chute/masks'
+
+augmentation:
+  pad_if_needed:
+    min_height: 256
+    min_width: 256
+  resize:
+    height: 256
+    width: 256
+  vertical_flip:
+    prob: 0.5
+  horizontal_flip:
+    prob: 0.5
+  one_of:
+    prob: 1.0
