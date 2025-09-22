@@ -1,1 +1,1 @@
-Consists of segmentation, fgeature extraction and unet model.
+Consists of segmentation, feature extraction and unet model.
